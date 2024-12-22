@@ -1,5 +1,14 @@
 package com.example.ucp2.ui.viewmodel.barang
 
+
+
+
+data class BrgUIState(
+    val barangEvent: BarangEvent = BarangEvent(),
+    val isEntryValid: FormErrorState = FormErrorState(),
+    val snackBarMessage: String? = null,
+)
+
 data class FormErrorState(
     val id: String? = null,
     val nama: String? = null,
