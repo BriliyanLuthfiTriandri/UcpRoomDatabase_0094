@@ -8,5 +8,9 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface SuplierDao {
+    @Insert
+    suspend fun insertSuplier(
+        suplier: Suplier
+    )
 
 }
