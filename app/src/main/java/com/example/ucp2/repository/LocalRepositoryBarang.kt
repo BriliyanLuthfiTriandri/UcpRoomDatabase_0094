@@ -6,7 +6,10 @@ import kotlinx.coroutines.flow.Flow
 
 class LocalRepositoryBarang (
     private val barangDao: BarangDao
-) : RepositoryBarang {
+) : RepositoryBarang{
 
+    override suspend fun insertBrg(barang: Barang){
+        barangDao.insertBarang(barang)
+    }
 
 }
