@@ -11,22 +11,21 @@ import com.example.ucp2.repository.RepositoryBarang
 import kotlinx.coroutines.launch
 
 class BarangViewModel(private val repositoryBarang: RepositoryBarang
-): ViewModel() {
+): ViewModel(){
 
     var uiStateBrg by mutableStateOf(BrgUIState())
 
     // Memperbarui state berdasarkan input pengguna
-    fun updateState(barangEvent: BarangEvent) {
+    fun updateState(barangEvent: BarangEvent){
         uiStateBrg = uiStateBrg.copy(
             barangEvent = barangEvent,
         )
     }
-
     // Validasi data import pengguna
-    private fun validateFields(): Boolean {
-        val event = uiStateBrg.barangEvent
+    private fun validateFields(): Boolean{
+        val  event = uiStateBrg.barangEvent
         val errorState = FormErrorState(
-            id = if (event.id.isNotEmpty()) null else "Id tidak boleh kosong",
+            id = if (event.id.isNotEmpty())  null else "Id tidak boleh kosong",
             nama = if (event.nama.isNotEmpty()) null else "Nama tidak boleh kosong",
             deskripsi = if (event.deskripsi.isNotEmpty()) null else "Deskripsi tidak boleh kosong",
             harga = if (event.harga.isNotEmpty()) null else "Harga tidak boleh kosong",
@@ -36,7 +35,39 @@ class BarangViewModel(private val repositoryBarang: RepositoryBarang
         uiStateBrg = uiStateBrg.copy(isEntryValid = errorState)
         return errorState.isValid()
     }
+    //Menyimpan data ke repository
+    fun saveData(){
+        val currentEvent = uiStateBrg.barangEvent
+
+        if(validateFields()){
+            viewModelScope.launch {
+                try{
+                    repositoryBarang.insertBrg(currentEvent.toBarangEntity())
+                    uiStateBrg = uiStateBrg.copy(
+                        snackBarMessage = "Data berhasil disimpan",
+                        barangEvent = BarangEvent(), //Reset input form
+                        isEntryValid = FormErrorState() // Reset error state
+                    )
+                }catch (e: Exception){
+                    uiStateBrg = uiStateBrg.copy(
+                        snackBarMessage = "Data gagal disimpan"
+                    )
+                }
+            }
+        } else{
+            uiStateBrg = uiStateBrg.copy(
+                snackBarMessage = "Input tidak valid. Periksa kembali data anda."
+            )
+        }
+
+    }
+
+    //Reset pesan Snackbar setelah ditampilkan
+    fun resetSnackBarMessage(){
+        uiStateBrg = uiStateBrg.copy(snackBarMessage = null)
+    }
 }
+
 
 
 data class BrgUIState(
