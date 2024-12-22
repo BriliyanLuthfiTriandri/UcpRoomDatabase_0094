@@ -14,5 +14,7 @@ class LocalRepositoryBarang (
     override suspend fun deleteBrg(barang: Barang){
         barangDao.deleteBarang(barang)
     }
+    override fun getAllBrg():Flow<List<Barang>> =
+        barangDao.getAllBarang()
 
 }
