@@ -15,4 +15,19 @@ abstract class WarungDatabase : RoomDatabase(){
     abstract fun BarangDao() : BarangDao
     abstract fun SuplierDao() : SuplierDao
 
+    companion object {
+        @Volatile
+        private var Instances: WarungDatabase? =  null
+
+        fun getDatabase(context: Context) : WarungDatabase {
+            return (Instances ?: synchronized(this) {
+                Room.databaseBuilder(
+                    context,
+                    WarungDatabase::class.java,
+                    "WarungDatabase"
+                )
+                    .build().also { Instances = it }
+            })
+        }
+    }
 }
