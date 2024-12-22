@@ -51,6 +51,14 @@ fun TopAppBar(
             }
         }
 
+        // Judul
+        Text(
+            text = judul,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onSurface,
+            modifier = Modifier.align(Alignment.Center)
+        )
     }
 }
 
