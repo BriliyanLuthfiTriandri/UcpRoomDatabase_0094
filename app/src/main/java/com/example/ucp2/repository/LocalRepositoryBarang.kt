@@ -11,5 +11,8 @@ class LocalRepositoryBarang (
     override suspend fun insertBrg(barang: Barang){
         barangDao.insertBarang(barang)
     }
+    override suspend fun deleteBrg(barang: Barang){
+        barangDao.deleteBarang(barang)
+    }
 
 }
