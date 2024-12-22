@@ -11,5 +11,6 @@ class LocalRepositorySuplier (
     override suspend fun insertSplr(suplier: Suplier){
         suplierDao.insertSuplier(suplier)
     }
-
+    override fun getAllSplr(): Flow<List<Suplier>> =
+        suplierDao.getAllSuplier()
 }
