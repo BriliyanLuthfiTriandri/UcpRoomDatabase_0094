@@ -8,5 +8,8 @@ class LocalRepositorySuplier (
     private val suplierDao: SuplierDao
 ) : RepositorySuplier{
 
+    override suspend fun insertSplr(suplier: Suplier){
+        suplierDao.insertSuplier(suplier)
+    }
 
 }
