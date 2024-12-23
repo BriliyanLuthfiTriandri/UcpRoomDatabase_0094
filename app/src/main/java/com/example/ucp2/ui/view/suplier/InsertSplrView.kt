@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -56,9 +57,13 @@ fun InsertBodySplr(
         Button(
             onClick = onClick,
             modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFFFF91A4) // Mengatur warna latar belakang tombol
+            )
         ) {
             Text("Simpan")
         }
+
     }
 }
 
@@ -85,20 +90,22 @@ fun InsertSplrView(
     }
 
     Scaffold (
-        modifier = modifier,
+        modifier = modifier
+            .padding(top = 10.dp),
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
     ){ padding ->
+        TopAppBar(
+            onBack = onBack,
+            showBackButton = true,
+            judul = "Tambah Suplier"
+        )
         Column (
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(padding)
                 .padding(16.dp)
+                .padding(top = 80.dp)
         ){
-            TopAppBar(
-                onBack = onBack,
-                showBackButton = true,
-                judul = "Tambah Suplier"
-            )
             // Isi Body
             InsertBodySplr(
                 uiState = uiState,
