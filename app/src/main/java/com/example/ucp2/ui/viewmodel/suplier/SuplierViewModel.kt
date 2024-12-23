@@ -12,6 +12,13 @@ import kotlinx.coroutines.launch
 
 
 
+fun SuplierEvent.toSuplierEntity(): Suplier = Suplier(
+    id = id,
+    nama = nama,
+    kontak = kontak,
+    alamat = alamat,
+)
+
 data class SuplierEvent(
     val id : String = "",
     val nama : String = "",
