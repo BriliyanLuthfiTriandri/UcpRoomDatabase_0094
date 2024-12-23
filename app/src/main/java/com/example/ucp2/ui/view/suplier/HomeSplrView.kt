@@ -47,7 +47,37 @@ import com.example.ucp2.ui.viewmodel.suplier.HomeUiStateSuplier
 import kotlinx.coroutines.launch
 
 
+@Composable
+fun HomeSplrView(
+    viewModel: HomeSplrViewModel = viewModel(factory = PenyediaViewModel.Factory),
+    onAddSplr: () -> Unit = { },
+    onDetailClick: (String) -> Unit = { },
+    onBack : () -> Unit = { },
+    modifier: Modifier
+) {
+    Scaffold (
+        modifier = Modifier
+            .padding(top = 25.dp),
+        topBar = {
+            TopAppBar(
+                judul = "List Suplier",
+                showBackButton = true,
+                onBack = onBack
+            )
+        },
 
+    ) { innerPadding ->
+        val homeUiState by viewModel.homeUiStateSuplier.collectAsState()
+
+        BodyHomeSplrView(
+            homeUiStateSuplier = homeUiState,
+            onClick = {
+                onDetailClick(it)
+            },
+            modifier = Modifier.padding(innerPadding)
+        )
+    }
+}
 
 @Composable
 fun BodyHomeSplrView (
