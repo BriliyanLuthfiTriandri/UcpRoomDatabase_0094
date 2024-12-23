@@ -109,6 +109,7 @@ fun HomeAwal(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(16.dp)
+                .padding(top = 150.dp)
         ) {
             Row(
                 modifier = Modifier
