@@ -1,6 +1,7 @@
 package com.example.ucp2.ui.view.barang
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -57,7 +58,7 @@ fun HomeBrgView(
 ) {
     Scaffold (
         modifier = Modifier
-            .padding(top = 25.dp),
+            .padding(top = 35.dp),
         topBar = {
             TopAppBar(
                 judul = "List Barang",
@@ -68,7 +69,6 @@ fun HomeBrgView(
 
     ) { innerPadding ->
         val homeUiState by viewModel.homeUiState.collectAsState()
-
         BodyHomeBrgView(
             homeUiStateBrg = homeUiState,
             onClick = {
