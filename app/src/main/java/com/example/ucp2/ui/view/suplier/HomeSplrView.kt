@@ -50,6 +50,58 @@ import kotlinx.coroutines.launch
 
 
 @Composable
+fun BodyHomeSplrView (
+    homeUiStateSuplier: HomeUiStateSuplier,
+    onClick: (String) -> Unit = { },
+    modifier: Modifier = Modifier
+) {
+
+    val coroutineScope = rememberCoroutineScope()
+    val snackbarHostState = remember { SnackbarHostState() }
+    when {
+        homeUiStateSuplier.isLoading -> {
+            Box (
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
+            }
+        }
+
+        homeUiStateSuplier.isError -> {
+            LaunchedEffect(homeUiStateSuplier.errorMessage) {
+                homeUiStateSuplier.errorMessage?.let{ message ->
+                    coroutineScope.launch {
+                        snackbarHostState.showSnackbar(message)
+                    }
+                }
+            }
+        }
+
+        homeUiStateSuplier.listSplr.isEmpty() -> {
+            Box (
+                modifier = modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text (
+                    text = "Tidak ada data Suplier. ",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
+
+        else -> {
+            ListSuplier(
+                listSplr =  homeUiStateSuplier.listSplr,
+                modifier = modifier
+            )
+        }
+    }
+}
+
+@Composable
 fun ListSuplier(
     listSplr: List<Suplier>,
     modifier: Modifier = Modifier,
