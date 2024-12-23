@@ -58,7 +58,7 @@ fun HomeSplrView(
 ) {
     Scaffold (
         modifier = Modifier
-            .padding(top = 40.dp),
+            .padding(top = 35.dp),
         topBar = {
             TopAppBar(
                 judul = "List Suplier",
