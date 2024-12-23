@@ -7,8 +7,16 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.DateRange
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -139,6 +147,7 @@ fun FormBarang(
                 onValueChange(barangEvent.copy(id = it))
             },
             label = { Text("ID") },
+            leadingIcon = { Icon(imageVector = Icons.Default.AccountCircle, contentDescription = " ")},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             isError = errorState.id != null,
             placeholder = { Text("Masukan ID") },
@@ -155,6 +164,7 @@ fun FormBarang(
                 onValueChange(barangEvent.copy(nama = it))
             },
             label = { Text("Nama") },
+            leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = " ")},
             isError = errorState.nama != null,
             placeholder = { Text("Masukan Nama Anda") },
         )
@@ -170,6 +180,7 @@ fun FormBarang(
                 onValueChange(barangEvent.copy(deskripsi = it))
             },
             label = { Text("Deskripsi") },
+            leadingIcon = { Icon(imageVector = Icons.Default.Info, contentDescription = " ")},
             isError = errorState.deskripsi != null,
             placeholder = { Text("Masukan Deskripsi Barang") },
         )
@@ -185,6 +196,7 @@ fun FormBarang(
                 onValueChange(barangEvent.copy(harga = it))
             },
             label = { Text("Harga") },
+            leadingIcon = { Icon(imageVector = Icons.Default.DateRange, contentDescription = " ")},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             isError = errorState.harga != null,
             placeholder = { Text("Masukan Harga Barang") },
@@ -202,6 +214,8 @@ fun FormBarang(
                 onValueChange(barangEvent.copy(stok = it))
             },
             label = { Text("Stok") },
+            leadingIcon = { Icon(imageVector = Icons.Default.ShoppingCart, contentDescription = " ")},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             isError = errorState.stok != null,
             placeholder = { Text("Masukan Stok") },
         )
