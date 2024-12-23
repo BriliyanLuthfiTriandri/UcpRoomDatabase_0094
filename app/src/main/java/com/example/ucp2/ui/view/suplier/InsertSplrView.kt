@@ -36,6 +36,59 @@ import kotlinx.coroutines.launch
 
 
 
+
+
+@Composable
+fun InsertSplrView(
+    onBack: () -> Unit,
+    onNavigate: () -> Unit,
+    modifier: Modifier = Modifier,
+    viewModel: SuplierViewModel = viewModel(factory = PenyediaViewModel.Factory ) // Inisialisasi viewModel
+){
+    val uiState = viewModel.uiStateSplr // Ambil UI State dari ViewModel
+    val snackbarHostState = remember { SnackbarHostState() }
+    val coroutineScope = rememberCoroutineScope()
+
+    // Observasi perubahan snackBarMessage
+    LaunchedEffect (uiState.snackBarMessage) {
+        uiState.snackBarMessage?.let { message ->
+            coroutineScope.launch {
+                snackbarHostState.showSnackbar(message) //Tampilkan SnackHolder
+                viewModel.resetSnackBarMessage()
+            }
+        }
+    }
+
+    Scaffold (
+        modifier = modifier,
+        snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
+    ){ padding ->
+        Column (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(padding)
+                .padding(16.dp)
+        ){
+            TopAppBar(
+                onBack = onBack,
+                showBackButton = true,
+                judul = "Tambah Suplier"
+            )
+            // Isi Body
+            InsertBodySplr(
+                uiState = uiState,
+                onValueChange = { updateEvent ->
+                    viewModel.updateState(updateEvent) // Update State di ViewModel
+                },
+                onClick = {
+                    viewModel.saveData()
+                    onNavigate()
+                }
+            )
+        }
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun FormSuplier(
