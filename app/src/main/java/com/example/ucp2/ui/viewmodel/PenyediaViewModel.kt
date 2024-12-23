@@ -13,6 +13,45 @@ import com.example.ucp2.ui.viewmodel.barang.UpdateBrgViewModel
 import com.example.ucp2.ui.viewmodel.suplier.HomeSplrViewModel
 import com.example.ucp2.ui.viewmodel.suplier.SuplierViewModel
 
+object PenyediaViewModel{
+
+    val Factory = viewModelFactory {
+        initializer {
+            HomeSplrViewModel(
+                warungApp().containerApp.repositorySuplier
+            )
+        }
+        initializer {
+            HomeBrgViewModel(
+                warungApp().containerApp.repositoryBarang
+            )
+        }
+        initializer {
+            BarangViewModel(
+                warungApp().containerApp.repositoryBarang,
+            )
+        }
+        initializer {
+            DetailBrgViewModel(
+                createSavedStateHandle(),
+                warungApp().containerApp.repositoryBarang,
+            )
+        }
+        initializer {
+            UpdateBrgViewModel(
+                createSavedStateHandle(),
+                warungApp().containerApp.repositoryBarang,
+            )
+        }
+
+        initializer {
+            SuplierViewModel(
+                warungApp().containerApp.repositorySuplier,
+            )
+        }
+    }
+}
+
 
 fun CreationExtras.warungApp(): WarungApp =
     (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as WarungApp)
