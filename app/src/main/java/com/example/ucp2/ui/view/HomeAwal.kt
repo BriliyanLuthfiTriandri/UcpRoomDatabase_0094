@@ -33,7 +33,18 @@ fun HomeAwal(
     onHomeSuplier: () -> Unit = { },
 
 ) {
-    Column(modifier = Modifier.fillMaxSize()) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        Color.Yellow,
+                        Color(0xFFFF91A4)
+                    )
+                )
+            )
+    ) {
         Card(
             shape = RoundedCornerShape(bottomEnd = 70.dp),
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFF91A4)),
