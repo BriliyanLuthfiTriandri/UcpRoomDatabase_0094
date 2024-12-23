@@ -48,6 +48,26 @@ import kotlinx.coroutines.launch
 
 
 
+
+@Composable
+fun ListSuplier(
+    listSplr: List<Suplier>,
+    modifier: Modifier = Modifier,
+) {
+    LazyColumn (
+        modifier = modifier
+    ) {
+        items(
+            items = listSplr,
+            itemContent = { splr ->
+                CardSplr(
+                    splr = splr,
+                )
+            }
+        )
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CardSplr(
