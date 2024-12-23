@@ -20,7 +20,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
-import com.example.ucp2.R // Pastikan import resource gambar yang sesuai
+import com.example.ucp2.R
 
 @Composable
 fun TopAppBar(
@@ -62,10 +62,9 @@ fun TopAppBar(
                         tint = MaterialTheme.colorScheme.primary
                     )
                 }
-                Spacer(modifier = Modifier.weight(1f)) // Memisahkan tombol dari judul
+                Spacer(modifier = Modifier.weight(1f))
             }
         }
-
         // Judul dan Gambar
         Row(
             modifier = Modifier.align(Alignment.Center),
@@ -81,7 +80,7 @@ fun TopAppBar(
                     .padding(end = 30.dp)
             )
             Image(
-                painter = painterResource(id = R.drawable.logowarung), // Ganti dengan ID gambar Anda
+                painter = painterResource(id = R.drawable.logotopapp),
                 contentDescription = "Logo",
                 modifier = Modifier
                     .size(80.dp)
