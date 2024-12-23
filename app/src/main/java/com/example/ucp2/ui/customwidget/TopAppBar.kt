@@ -1,5 +1,6 @@
 package com.example.ucp2.ui.customwidget
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -7,14 +8,19 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
+import com.example.ucp2.R // Pastikan import resource gambar yang sesuai
 
 @Composable
 fun TopAppBar(
@@ -26,7 +32,16 @@ fun TopAppBar(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .clip(shape = RoundedCornerShape(10.dp))
+            .background(
+                brush = Brush.linearGradient(
+                    colors = listOf(
+                        Color(0xFFFF91A4),
+                        Color.Cyan
+                    )
+                )
+            )
+            .padding(10.dp),
         contentAlignment = Alignment.Center
     ) {
         // Tombol Kembali
@@ -34,7 +49,7 @@ fun TopAppBar(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 8.dp),
+                    .padding(start = 10.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
@@ -51,14 +66,28 @@ fun TopAppBar(
             }
         }
 
-        // Judul
-        Text(
-            text = judul,
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.onSurface,
-            modifier = Modifier.align(Alignment.Center)
-        )
+        // Judul dan Gambar
+        Row(
+            modifier = Modifier.align(Alignment.Center),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = judul,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onSurface,
+                modifier = Modifier
+                    .padding(start = 120.dp)
+                    .padding(end = 30.dp)
+            )
+            Image(
+                painter = painterResource(id = R.drawable.logowarung), // Ganti dengan ID gambar Anda
+                contentDescription = "Logo",
+                modifier = Modifier
+                    .size(80.dp)
+            )
+        }
     }
 }
+
 
