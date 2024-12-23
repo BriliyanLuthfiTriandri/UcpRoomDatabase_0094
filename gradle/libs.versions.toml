@@ -13,6 +13,7 @@ roomCompiler = "2.6.1"
 roomCommonJvm = "2.7.0-alpha12"
 roomKtx = "2.6.1"
 roomRuntimeAndroid = "2.7.0-alpha12"
+monitor = "1.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +35,7 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 androidx-room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 androidx-room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
+androidx-monitor = { group = "androidx.test", name = "monitor", version.ref = "monitor" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
