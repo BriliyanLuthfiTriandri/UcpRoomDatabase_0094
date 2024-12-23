@@ -12,6 +12,12 @@ import kotlinx.coroutines.launch
 
 
 
+data class SplrUIState(
+    val suplierEvent: SuplierEvent = SuplierEvent(),
+    val isEntryValid: FormErrorState = FormErrorState(),
+    val snackBarMessage: String? = null,
+)
+
 data class FormErrorState(
     val id: String? = null,
     val nama: String? = null,
