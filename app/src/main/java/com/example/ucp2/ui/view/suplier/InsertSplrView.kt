@@ -8,8 +8,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Call
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Scaffold
@@ -141,6 +147,7 @@ fun FormSuplier(
                 onValueChange(suplierEvent.copy(id = it))
             },
             label = { Text("ID") },
+            leadingIcon = { Icon(imageVector = Icons.Default.AccountCircle, contentDescription = " ") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
             isError = errorState.id != null,
             placeholder = { Text("Masukan ID") },
@@ -157,6 +164,7 @@ fun FormSuplier(
                 onValueChange(suplierEvent.copy(nama = it))
             },
             label = { Text("Nama") },
+            leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = " ")},
             isError = errorState.nama != null,
             placeholder = { Text("Masukan Nama") },
         )
@@ -173,6 +181,7 @@ fun FormSuplier(
                 onValueChange(suplierEvent.copy(kontak = it))
             },
             label = { Text("Kontak") },
+            leadingIcon = { Icon(imageVector = Icons.Default.Call, contentDescription = " ")},
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
             isError = errorState.kontak != null,
             placeholder = { Text("Masukan Nomor Anda") },
@@ -189,6 +198,7 @@ fun FormSuplier(
                 onValueChange(suplierEvent.copy(alamat = it))
             },
             label = { Text("Alamat") },
+            leadingIcon = { Icon(imageVector = Icons.Default.LocationOn, contentDescription = " ")},
             isError = errorState.alamat != null,
             placeholder = { Text("Masukan Alamat Anda") },
         )
