@@ -42,6 +42,34 @@ import com.example.ucp2.ui.viewmodel.barang.toBarangEntity
 
 
 
+
+@Composable
+fun ItemDetailBrg(
+    modifier: Modifier = Modifier,
+    barang: Barang
+) {
+    Card(
+        modifier = modifier
+            .padding(top = 80.dp)
+            .fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.primaryContainer,
+            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+        )
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp)
+        ) {
+            RowComponentDetailBrg(judul = "ID", isinya = barang.id)
+            RowComponentDetailBrg(judul = "Nama", isinya = barang.nama)
+            RowComponentDetailBrg(judul = "Deskripsi", isinya = barang.deskripsi)
+            RowComponentDetailBrg(judul = "Harga", isinya = barang.harga)
+            RowComponentDetailBrg(judul = "Stok", isinya = barang.stok.toString())
+            RowComponentDetailBrg(judul = "Nama Suplier", isinya = barang.namaSuplier)
+        }
+    }
+}
+
 @Composable
 fun RowComponentDetailBrg(
     modifier: Modifier = Modifier,
