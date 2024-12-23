@@ -43,6 +43,36 @@ import com.example.ucp2.ui.viewmodel.barang.toBarangEntity
 
 
 @Composable
+fun RowComponentDetailBrg(
+    modifier: Modifier = Modifier,
+    judul: String,
+    isinya: String
+) {
+    Row(
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = judul,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = Color.Gray,
+            modifier = Modifier.weight(1f) // Label
+        )
+        Text(
+            text = ": $isinya",
+            fontSize = 16.sp,
+            fontWeight = FontWeight.Normal,
+            modifier = Modifier.weight(2f) // Nilai
+        )
+    }
+}
+
+
+
+@Composable
 private  fun DeleteConfirmationDialog(
     onDeleteConfirm: () -> Unit,
     onDeleteCancel: () -> Unit,
