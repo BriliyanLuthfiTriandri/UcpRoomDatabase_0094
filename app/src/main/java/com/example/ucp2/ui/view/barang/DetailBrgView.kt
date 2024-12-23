@@ -44,6 +44,71 @@ import com.example.ucp2.ui.viewmodel.barang.toBarangEntity
 
 
 @Composable
+fun BodyDetailBrg(
+    modifier: Modifier = Modifier,
+    detailUiState: DetailUiState = DetailUiState(),
+    onDeleteClick: () -> Unit = { }
+) {
+    var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
+    when {
+        detailUiState.isLoading -> {
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator() //show loading
+            }
+        }
+
+        detailUiState.isUiEventNotEmpty -> {
+            Column (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp)
+            ) {
+                ItemDetailBrg(
+                    barang = detailUiState.detailUiEvent.toBarangEntity(),
+                    modifier = Modifier
+                )
+                Spacer(modifier = Modifier.padding(8.dp))
+                Button(
+                    onClick = {
+                        deleteConfirmationRequired = true
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(text = "Delete")
+                }
+
+                if (deleteConfirmationRequired) {
+                    DeleteConfirmationDialog(
+                        onDeleteConfirm = {
+                            deleteConfirmationRequired = false
+                            onDeleteClick()
+                        },
+                        onDeleteCancel = { deleteConfirmationRequired = false },
+                        modifier = Modifier.padding(8.dp)
+                    )
+                }
+            }
+        }
+
+        detailUiState.isUiEventEmpty -> {
+            Box(
+                modifier = Modifier.fillMaxWidth(),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "Data tidak Ditemukan",
+                    modifier = Modifier.padding(16.dp)
+                )
+            }
+        }
+    }
+}
+
+
+@Composable
 fun ItemDetailBrg(
     modifier: Modifier = Modifier,
     barang: Barang
