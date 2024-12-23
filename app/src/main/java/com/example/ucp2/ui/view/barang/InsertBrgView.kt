@@ -1,5 +1,6 @@
 package com.example.ucp2.ui.view.barang
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
@@ -52,13 +54,12 @@ fun InsertBodyBrg(
             errorState = uiState.isEntryValid,
             modifier = Modifier.fillMaxWidth()
         )
-        Spacer(Modifier.padding(top = 30.dp))
         Button(
             onClick = onClick,
-            modifier = Modifier
-                .padding(top = 10.dp)
-                .fillMaxWidth(),
-
+            modifier = Modifier.fillMaxWidth(),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = Color(0xFFFF91A4)
+            )
         ) {
             Text("Simpan")
         }
@@ -88,20 +89,22 @@ fun InsertBrgView(
     }
 
     Scaffold (
-        modifier = modifier,
+        modifier = modifier
+            .padding(top = 10.dp),
         snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
     ){ padding ->
+        TopAppBar(
+            onBack = onBack,
+            showBackButton = true,
+            judul = "Tambah Barang"
+        )
         Column (
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(padding)
                 .padding(16.dp)
+                .padding(top = 80.dp)
         ){
-            TopAppBar(
-                onBack = onBack,
-                showBackButton = true,
-                judul = "Tambah Barang"
-            )
             // Isi Body
             InsertBodyBrg(
                 uiState = uiState,
