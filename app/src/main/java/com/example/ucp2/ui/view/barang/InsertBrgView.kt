@@ -34,6 +34,36 @@ import com.example.ucp2.ui.viewmodel.barang.FormErrorState
 import kotlinx.coroutines.launch
 
 
+@Composable
+fun InsertBodyBrg(
+    modifier: Modifier = Modifier,
+    onValueChange: (BarangEvent) -> Unit,
+    uiState: BrgUIState,
+    onClick: () -> Unit
+){
+    Column (
+        modifier = modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        FormBarang(
+            barangEvent = uiState.barangEvent,
+            onValueChange = onValueChange,
+            errorState = uiState.isEntryValid,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Spacer(Modifier.padding(top = 30.dp))
+        Button(
+            onClick = onClick,
+            modifier = Modifier
+                .padding(top = 10.dp)
+                .fillMaxWidth(),
+
+        ) {
+            Text("Simpan")
+        }
+    }
+}
 
 
 @Composable
