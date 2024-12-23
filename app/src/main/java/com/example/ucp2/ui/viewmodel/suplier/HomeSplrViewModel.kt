@@ -13,6 +13,38 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
+class HomeSplrViewModel(
+    private val repositorySuplier: RepositorySuplier
+) : ViewModel() {
+    val homeUiStateSuplier: StateFlow<HomeUiStateSuplier> = repositorySuplier.getAllSplr()
+        .filterNotNull()
+        .map {
+            HomeUiStateSuplier(
+                listSplr = it.toList(),
+                isLoading = false,
+            )
+        }
+        .onStart {
+            emit(HomeUiStateSuplier(isLoading = true))
+            delay(900)
+        }
+        .catch {
+            emit(
+                HomeUiStateSuplier(
+                    isLoading = false,
+                    isError = true,
+                    errorMessage = it.message ?: "Terjadi Kesalahan"
+                )
+            )
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = HomeUiStateSuplier(
+                isLoading = true,
+            )
+        )
+}
 
 
 data class HomeUiStateSuplier(
