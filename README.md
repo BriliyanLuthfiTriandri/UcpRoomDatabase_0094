@@ -64,3 +64,6 @@
 
 22. Validasi Saat Data Suplier yang Diisi Belum Lengkap
 <img width="220" alt="validasi saat data suplier yang diisi belum lengkap" src="https://github.com/user-attachments/assets/27919c8e-f01a-4a63-9348-0dddc1fa13c3" />
+
+
+link video https://drive.google.com/file/d/1heYAa-EqBrhAtw87vsjTdIUreQ2g-wWV/view?usp=sharing 
