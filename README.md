@@ -1,6 +1,5 @@
 1. Tampilan halaman awal
-
-![ss tampilan halaman awal ](https://github.com/user-attachments/assets/88f06f69-c20b-496c-8e8b-8c8963fd38bb)
+<img width="221" alt="tampilan halaman awal" src="https://github.com/user-attachments/assets/88f06f69-c20b-496c-8e8b-8c8963fd38bb" />
 
 2. Tampilan Halaman List Barang
 
