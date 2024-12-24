@@ -8,7 +8,7 @@
 
 3. Tampilan Halaman List Suplier
 
-![ss tampilan halaman list suplier](https://github.com/user-attachments/assets/ce7f1f4a-83ac-4585-bc00-ec37d7cd4a08)
+![ss tampilan list suplier](https://github.com/user-attachments/assets/ee18e526-f7c9-45bf-9f3a-7573efff24f5)
 
 4. Tamplian Halaman Tambah Barang
 
