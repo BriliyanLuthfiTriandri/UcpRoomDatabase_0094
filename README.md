@@ -8,7 +8,7 @@
 
 3. Tampilan Halaman List Suplier
 
-![ss tampilan list suplier](https://github.com/user-attachments/assets/ee18e526-f7c9-45bf-9f3a-7573efff24f5)
+![ss tampilan list suplier ](https://github.com/user-attachments/assets/13c70f24-60b2-4d7b-947f-05be629ac3a3)
 
 4. Tamplian Halaman Tambah Barang
 
@@ -24,7 +24,7 @@
 
 7. Tampilan List Suplier Setelah Input Data
 
-![ss tampilan list suplier setelah input data](https://github.com/user-attachments/assets/79f9f70d-986a-428d-840d-f4a134dc1278)
+![ss tampilan list suplier setelah input data](https://github.com/user-attachments/assets/a157b474-c205-42c9-923f-671d89e87fde)
 
 8. Tampilan Halaman Input data Barang
 
